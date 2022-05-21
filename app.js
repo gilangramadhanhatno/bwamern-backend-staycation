@@ -28,7 +28,6 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
-app.use(cors());
 app.use(
   session({
     secret: "keyboard cat",
@@ -45,6 +44,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/sb-admin-2", express.static(path.join(__dirname, "node_modules/startbootstrap-sb-admin-2")));
 
+app.use(cors());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 // admin
